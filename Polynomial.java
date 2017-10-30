@@ -8,9 +8,9 @@ import java.util.*;
 public class Polynomial{
   
   public Queue<Term> terms;
-  
-  public Queue<Term> getTerms(){
-    return terms;
+ 
+  public Polynomial(){
+   terms = new LinkedList<Term>();
   }
   
   public String toString(){

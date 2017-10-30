@@ -1,5 +1,48 @@
+/*FILENAME: Driver.java
+ *WHO: Xinhui Xu, Julia McDonald
+ *WHAT: Assignment 6 Task 3
+ */
+import java.io.*;
+import java.util.Scanner;
+
 public class Driver{
-  public static void main( String[] args ){
+  //Assumes correct input
+  
+  public static Term scanToTerm(String input){
+    //"2x^2" "3x" "5"
+    int x_index = input.indexOf('x');
+    int caret = input.indexOf('^');
+    int exp; int coef;
+    if (caret == -1){
+      if (x_index == -1){ //constant term
+        x_index = input.length();
+        exp = 0;
+      } else {
+        exp = 1; //"5x"
+      }
+    } else { //"43x^19
+      exp = Integer.parseInt(input.substring(caret + 1, input.length()));
+    }
+    if (x_index == 0) { //"x^82"
+      coef = 1;
+    } else {
+      coef = Integer.parseInt(input.substring(0, x_index));
+    }
+    Term ret = new Term(coef, exp);
+    return ret;
+  }
+  
+  public static Polynomial scanToPolynomial(String input){
+    Polynomial ret = new Polynomial();
+    String[] term_strs = input.split("\\ \\+\\ ");
+    for (int i = 0; i<term_strs.length; i++ ){
+      ret.addTerm(scanToTerm(term_strs[i]));
+    }
+    System.out.println( ret );
+    return ret;
+  }
+  
+  public static void main(String[] args){
     System.out.println( "Starting testing with predefined Polynomials:" + 
                        "\n---------------------------------------------" );
     
@@ -46,5 +89,20 @@ public class Driver{
     
     p1000.addTerm( new Term( 1, -1000 ));
     System.out.println( "P1000 with large range of empty terms: " + p1000 );
+    
+    System.out.println( "Testing reading methods:" + "\n--------------------------" );
+    
+    String p1_str = ""; String p2_str = "";
+    Scanner scan = new Scanner(System.in);
+    
+    System.out.println("Enter Polynomial P1:");
+    String s1_str = scan.nextLine();
+    System.out.println("Enter Polynomial P2:");
+    String s2_str = scan.nextLine();
+    System.out.println("The result of adding P1 and P2 is:");
+    Polynomial s1 = scanToPolynomial(s1_str);
+    Polynomial s2 = scanToPolynomial(s2_str);
+    s1.addPolynomial(s2);
+    System.out.println(s1); 
   }
 }

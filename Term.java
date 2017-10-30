@@ -3,8 +3,8 @@
  */
 public class Term {
   //instance variables
-  public int coef;
-  public int exp;
+  private int coef;
+  private int exp;
   
   /**
    * Default constructor of a Term (no parameters)

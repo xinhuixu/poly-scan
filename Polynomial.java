@@ -7,10 +7,10 @@ import java.util.*;
 
 public class Polynomial{
   
-  private Queue<Term> terms;
+  public Queue<Term> terms;
   
-  public Polynomial(){
-    terms = new LinkedList<Term>();
+  public Queue<Term> getTerms(){
+    return terms;
   }
   
   public String toString(){
@@ -18,8 +18,12 @@ public class Polynomial{
     Queue<Term> temp = new LinkedList<Term>();
     
     while (!terms.isEmpty()){
-      temp.add(terms.peek());
-      s += terms.remove() + " + "; 
+      if( terms.peek().getCoef() != 0 ){
+        temp.add(terms.peek());
+        s += terms.peek().getCoef()+ " " + terms.remove() + " + ";
+      } else {
+        terms.remove();
+      }
     }
     terms = temp;
     if( s.length() >= 2 )

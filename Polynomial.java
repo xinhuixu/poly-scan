@@ -6,13 +6,17 @@
 import java.util.*;
 
 public class Polynomial{
-  
+
+    /*A queue, implemented with Linkedlist*/
   public Queue<Term> terms;
- 
+
+    
   public Polynomial(){
    terms = new LinkedList<Term>();
   }
-  
+
+    /* Returns string representation of the Polynomial 
+     @return s - String of Polynomial*/
   public String toString(){
     String s = "";
     Queue<Term> temp = new LinkedList<Term>();
@@ -20,7 +24,7 @@ public class Polynomial{
     while (!terms.isEmpty()){
       if( terms.peek().getCoef() != 0 ){
         temp.add(terms.peek());
-        s += terms.peek().getCoef()+ " " + terms.remove() + " + ";
+        s += /*terms.peek().getCoef()+ " " +*/ terms.remove() + " + ";
       } else {
         terms.remove();
       }
@@ -31,7 +35,9 @@ public class Polynomial{
     
     return s;
   }
-  
+    /*Adds a term to the Polynomial object.
+     * @param t - Term to be added
+     */
   public void addTerm(Term t){ 
     if( t.getCoef() == 0 )
       return;
@@ -64,7 +70,10 @@ public class Polynomial{
 
     terms = newTerms;
   }
-  
+
+    /* Add a Polynomial to this Polynomial 
+    * @param p - Polynomial to be added
+    */
   public void addPolynomial(Polynomial p){
     Queue<Term> temp = new LinkedList<Term>();
     while( !p.terms.isEmpty() ){
@@ -75,14 +84,17 @@ public class Polynomial{
     }
     p.terms = temp;
   }
-  
+
+    /*Makes and returns a clone of this Polynomial.
+     @return Polynomial - clone*/
   public Polynomial clone(){
     Polynomial p1 = new Polynomial();
     Queue<Term> clonedTerms = new LinkedList<Term>( terms );
     p1.terms = clonedTerms;
     return p1;
   }
-  
+
+    /*main method, basic testing*/
   public static void main(String [] args){
     Polynomial p0 = new Polynomial();
     p0.addTerm(new Term(2, 2));

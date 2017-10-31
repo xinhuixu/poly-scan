@@ -1,3 +1,6 @@
+/*FILENAME: Term.java
+  WHO: Julia McDonald, Xinhui Xu
+ */
 /**
  * Represents a polynomial term
  */

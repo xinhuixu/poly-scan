@@ -35,25 +35,6 @@ public class Driver{
     Term ret = new Term(coef, exp);
     return ret;
   }
-    /* Very roughly checks if input Polynomial string is valid.
-     * @param s - input string
-     */
-    public static void isStrValid(String s){
-	s = s.replace("x", "");
-	s = s.replace("^", "");
-	s = s.replace("+", "");
-	s = s.replace(" ", "");
-	s = s.replace("-", "");
-	//	System.out.println(s);
-	//    Strips away the possible non-number parts and see if it remains number //problem: empty input
-	try {
-	    Integer.parseInt(s);
-	} catch(NumberFormatException e){
-	    System.out.println("Illegal characters. Please check your input.");
-	} catch(NullPointerException e){
-	    return;
-	}
-    }
 
     /* Takes a String input of a polynomial, e.x. "2x^2 + 4x + 4" and returns it as Polynomial object.
      * @param input - the user input of the polynomial
@@ -68,6 +49,26 @@ public class Driver{
     //    System.out.println( ret );
     return ret;
   }
+
+        /* Very roughly checks if input Polynomial string is valid.
+     * @param s - input string
+     */
+    public static void isStrValid(String s){
+	s = s.replace("x", "");
+	s = s.replace("^", "");
+	s = s.replace("+", "");
+	s = s.replace(" ", "");
+	s = s.replace("-", "");
+	//	System.out.println(s);
+	//    Strips away the possible non-number parts and see if it remains number //unsolved: empty input, ends with illegal +
+	try {
+	    Integer.parseInt(s);
+	} catch(NumberFormatException e){
+	    System.out.println("Illegal characters. Please check your input.");
+	} catch(NullPointerException e){
+	    return;
+	}
+    }
 
     /* Main method, contains predefined polynomials and user input prompts 
      */
@@ -123,19 +124,21 @@ public class Driver{
     
     String p1_str = ""; String p2_str = "";
     Scanner scan = new Scanner(System.in);
+
+    while (true) {
+	System.out.println("Enter Polynomial P1:");
+	String s1_str = scan.nextLine();
+	isStrValid(s1_str);
     
-    System.out.println("Enter Polynomial P1:");
-    String s1_str = scan.nextLine();
-    isStrValid(s1_str);
+	System.out.println("Enter Polynomial P2:");
+	String s2_str = scan.nextLine();
+	isStrValid(s2_str);
     
-    System.out.println("Enter Polynomial P2:");
-    String s2_str = scan.nextLine();
-    isStrValid(s2_str);
-    
-    System.out.println("The result of adding P1 and P2 is:");
-    Polynomial s1 = scanToPolynomial(s1_str);
-    Polynomial s2 = scanToPolynomial(s2_str);
-    s1.addPolynomial(s2);
-    System.out.println(s1); 
+	System.out.println("The result of adding P1 and P2 is:");
+	Polynomial s1 = scanToPolynomial(s1_str);
+	Polynomial s2 = scanToPolynomial(s2_str);
+	s1.addPolynomial(s2);
+	System.out.println(s1);
+    }
   }
 }

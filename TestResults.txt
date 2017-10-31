@@ -1,0 +1,45 @@
+/*TESTING FILE: Julia McDonald, Xinhui Xu*/
+
+Starting testing with predefined Polynomials:
+---------------------------------------------
+Polynomial P1: 2x^2 + 5x + 7x^-3 
+P11 is a clone of P1: 2x^2 + 5x + 7x^-3 
+Polynomial P2: -2x^3 + 1x^2 + 3x 
+P22 is clone of P2: -2x^3 + 1x^2 + 3x 
+P1 = P1 + P2: -2x^3 + 3x^2 + 8x + 7x^-3 
+P22 = P22 + P11: -2x^3 + 4x^2 + 11x + 7x^-3 [P22 == P1]
+P3 has factors negating P1: 2x^3 + -3x^2 + -8x + -7x^-3 
+P1 = P1 + P3 [should be empty]: 
+Polynomial P1000: 1x^1000 
+adding empty Poly to P1000: 1x^1000 
+P1000 with large range of empty terms: 1x^1000 + 1x^-1000 
+Testing reading methods:
+--------------------------
+Enter Polynomial P1:
+3x^5 + 2x^4 + x^2 + 5 
+Enter Polynomial P2:
+6x^2
+The result of adding P1 and P2 is:
+3x^5 + 2x^4 + 7x^2 + 5 
+Enter Polynomial P1:
+10
+Enter Polynomial P2:
+10
+The result of adding P1 and P2 is:
+20 
+Enter Polynomial P1:
+0
+Enter Polynomial P2:
+6x
+The result of adding P1 and P2 is:
+6x 
+Enter Polynomial P1:
+3x^5 + 10
+Enter Polynomial P2:
+3x^5 + 10
+The result of adding P1 and P2 is:
+6x^5 + 20
+Enter Polynomial P1:
+6xiuywer
+Illegal characters. Please check your input.
+Enter Polynomial P2:
